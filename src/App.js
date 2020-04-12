@@ -1,25 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Nav from './Menu/Nav';
+
+import imgBg from './images/bg.jpg';
+import imgLogo from './images/bsac_logo.png';
+
+let appBody = {
+    width: "100%",
+    minHeight: "100vh",
+    background: "#20232A",
+}
+
+let headerBody = {
+  height: "300px",
+  width: "100%",
+  backgroundImage: 'linear-gradient(to top, #20232A 0%, transparent 50%), url(' + imgBg + ')',
+  backgroundSize: 'cover',
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section style = {appBody}>
+      <div style = {headerBody}>
+        <div className = "textBody">
+            <img src = {imgLogo} className = "imageBody"></img>
+            <h1>Электронный учебно-методический комплекс</h1>
+            <p>по дисциплине</p>
+            <h2>"Специальная подготовка"</h2>
+            <p>для специальности</p>
+            <p>ВУС 403290 - Начальник аппаратной</p>
+        </div>
+      </div>
+
+      <Nav />
+
+    </section>
   );
 }
 
