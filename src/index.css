@@ -78,5 +78,23 @@ code {
   color: white;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: .65em;
+  font-size: .7em;
+  height: 100%;
+  align-items: center;
+  width: 100%;
+  transition: .5s;
+  text-align: center;
 }
+
+.navigation a:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 255, 0.137);
+  transition: .5s;
+}
+
+.BigMenu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+

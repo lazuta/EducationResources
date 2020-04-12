@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Nav from './Menu/Nav';
+import ModuleMenu from './Menu/ModuleMenu';
+import {Route, BrowserRouter} from 'react-router-dom';
 
 import imgBg from './images/bg.jpg';
 import imgLogo from './images/bsac_logo.png';
@@ -34,8 +36,10 @@ function App() {
         </div>
       </div>
 
-      <Nav />
+      {/* <Route component = {}/> */}
+      <ModuleMenu />
 
+      <Nav />
     </section>
   );
 }
