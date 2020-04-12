@@ -36,8 +36,9 @@ function App() {
         </div>
       </div>
 
-      {/* <Route component = {}/> */}
-      <ModuleMenu />
+      <BrowserRouter>
+        <Route path = "/" component = {ModuleMenu} />
+      </BrowserRouter>
 
       <Nav />
     </section>
