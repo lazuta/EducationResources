@@ -1,11 +1,17 @@
 import React from 'react';
 
-import Nav from './Menu/Nav';
 import ModuleMenu from './Menu/ModuleMenu';
 import {Route, BrowserRouter} from 'react-router-dom';
 
 import imgBg from './images/bg.jpg';
 import imgLogo from './images/bsac_logo.png';
+
+import Nav from './Menu/Nav';
+import Program from './Module/Program';
+import Theory from './Module/Theory';
+import Practice from './Module/Practice';
+import Control from './Module/Control';
+import Materials from './Module/Materials';
 
 let appBody = {
     width: "100%",
@@ -37,7 +43,11 @@ function App() {
       </div>
 
       <BrowserRouter>
-        <Route path = "/" component = {ModuleMenu} />
+        <Route path = "/program" component = {Program} />
+        <Route path = "/theory" component = {Theory} />
+        <Route path = "/practice" component = {Practice} />
+        <Route path = "/control" component = {Control} />
+        <Route path = "/materials" component = {Materials} />
       </BrowserRouter>
 
       <Nav />
