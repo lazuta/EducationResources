@@ -15,8 +15,6 @@ import Materials from './Module/Materials';
 
 import Vvedenie1 from './Material/Vvedenie1/Vvedenie1';
 
-
-
 let appBody = {
     width: "100%",
     minHeight: "100vh",
