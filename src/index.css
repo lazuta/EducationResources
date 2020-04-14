@@ -84,7 +84,7 @@ code {
   height: 100%;
   align-items: center;
   width: 100%;
-  transition: .5s;
+  transition: 1.5s;
   text-align: center;
 }
 
@@ -205,16 +205,21 @@ code {
   color: rgba(108, 106, 255, 0.719);
  }
 
-.list section {
+.list {
   max-width: 860px;
   margin: 0 auto;
   padding: 5px;
+  color: rgba(255, 255, 255, 0.664);
+  margin-bottom: 50px;
+  margin-top: 30px;
 }
 
 .list h1 {
   margin-top: 15px;
   margin-bottom: 50px;
   text-align: center;
+  color: rgba(255, 255, 255, 0.884);
+
 }
 
 .list .image {
@@ -234,7 +239,6 @@ code {
 .list .text {
   text-indent: 1.5em;
   text-align: justify;
-
 }
 
 .list h2 {
@@ -245,4 +249,84 @@ code {
 .list hr {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.imageFlex {
+  display: flex;
+  justify-content: center;
+}
+
+.question {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+
+.q-Title {
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.q-question {
+  color: white;
+  font-weight: 500;
+}
+
+.q-Input {
+  color: rgba(255, 255, 255, 0.808);
+  font-style: italic;
+  font-size: 14px;
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+}
+
+.q-Input input {
+  margin-right: 5px;
+}
+
+.q-Button {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto 10px auto;
+  border: 2px solid white;
+  background-color: #20232A;
+  color: white;
+  padding: 10px 15px;
+  font-weight: 500;
+  transition: 2s;
+  text-transform: uppercase;
+}
+
+.q-Button:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 255, 0.137);
+  transition: 1s;
+}
+
+.q-Button:disabled {
+  background-color: rgba(250, 25, 25, 0.137);
+}
+
+.q-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.q-list {
+  color: white;
+  font-size: 16px;
+}
+
+.q-Input div input:hover {
+  cursor: pointer;
+  border: 1px solid crimson;
 }
