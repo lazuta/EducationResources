@@ -330,3 +330,28 @@ code {
   cursor: pointer;
   border: 1px solid crimson;
 }
+
+.control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.controlTitle {
+  color: aliceblue;
+}
+
+.controleLinks {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  margin: 20px auto 0px auto;
+  max-width: 800px;
+}
+
+.controleLinks a {
+  color: white;
+  text-decoration: none;
+  margin: 5px;
+}
