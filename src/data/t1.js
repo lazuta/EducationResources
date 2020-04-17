@@ -1,7 +1,7 @@
-export const data = {
-    "id":"topic1",
+export const t1 = {
+    "id":"t1",
     "author": "Будько",
-    "totalQuestions": 15,
+    "totalQuestions": 14,
     "testName":"«Основы построения многоканальных систем передачи»",
     "questions":[
         {
@@ -92,16 +92,6 @@ export const data = {
             {"title": "число секунд с многочисленными ошибками (Severely Errored Second, SES), где SES означает секунду с коэффициентом ошибок ≥ 10^-3."},
             {"title": "коэффициент секунд с блочными ошибками (Errored Second Ratio, ESR), равный отношению секунд с блочными ошибками к общему числу секунд измерения.","flag": true},
             {"title": "все определения верны."}
-         ]
-        },
-        {
-          "id": "ten",
-          "title":"?Порядок? TODO: Придумать реализацию",
-          "variants" : [
-            {"title": "TODO: Lorem Ipsum is simply", "flag": true},
-            {"title": "TODO: Lorem Ipsum is simply"},
-            {"title": "TODO: Lorem Ipsum is simply"},
-            {"title": "TODO: Lorem Ipsum is simply"}
          ]
         },
         {

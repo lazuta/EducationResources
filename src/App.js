@@ -25,8 +25,7 @@ let headerBody = {
   width: "100%",
   backgroundImage: 'linear-gradient(to top, #20232A 0%, transparent 50%), url(' + imgBg + ')',
   backgroundSize: 'cover',
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat"
 }
 
 function App() {

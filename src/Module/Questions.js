@@ -1,18 +1,19 @@
 import React from 'react';
 
-import {data} from '../data/data'
+import {t1} from '../data/t1';
+import {t3} from '../data/t3';
 
 class Questions extends React.Component{
     step = 0;
     trueAnswer;
-    counter = 0;
+    counter;
+    data = {};
 
     constructor(props) {
         super(props);
             
         this.state = {
-            checked: false,
-            counter: 0
+            checked: false
         }
 
         this.start = this.start.bind(this);
@@ -21,6 +22,24 @@ class Questions extends React.Component{
     start() {
         let tmp;
         this.step = 0;
+        this.counter = 0;
+        this.data = {};
+
+        if(localStorage.getItem('id')) {
+            let storage = localStorage.getItem('id');
+
+            if(storage == "t1") {
+                this.data = t1;
+            } else if(storage == "t3") {
+                this.data = t3;
+            }
+
+            console.log(this.data);
+        } else {
+            this.data = t1;
+        }
+
+        console.log(this.data);
 
         document.querySelector('.finishTest').style.display = "none";
         document.querySelector('.repiatTest').style.display = "none";
@@ -28,28 +47,32 @@ class Questions extends React.Component{
         let result = document.querySelector('.TotalResultInput');
         if(result) { result.style.display = "none"; }
 
-        if(!localStorage.getItem(data.id)) {
+        if(!localStorage.getItem(this.data.id)) {
             tmp = {
-                'id_test': data.id,
+                'id_test': this.data.id,
                 'name': document.querySelector('#testStartName').value,
                 'true_answers': 0,
+                'answers': this.data.totalQuestions,
                 'assessment': 0,
                 'date': Date.now()
             }
         } else {
             tmp = {
-                'id_test': data.id,
-                'name': localStorage.getItem(data.id).name,
+                'id_test': this.data.id,
+                'name': localStorage.getItem(this.data.id).name,
                 'true_answers': 0,
+                'answers': this.data.totalQuestions,
                 'assessment': 0,
                 'date': Date.now()
             }
+
+            alert("Вы уже проходили данный тест. Предыдущий результат будет стерт.");
         }
 
         let login = document.querySelector('.login');
         if(login) { login.remove(); }
 
-        localStorage.setItem(data.id, JSON.stringify(tmp));
+        localStorage.setItem(this.data.id, JSON.stringify(tmp));
         
         this.anstrueAnswerwer = this.show(this.step);
     }
@@ -66,12 +89,12 @@ class Questions extends React.Component{
     }
 
     check(props) {
-        let question = data.questions[this.step].variants;
+        let question = this.data.questions[this.step].variants;
         
         for(let i = 0; i <= question.length - 1; i++) {
             let input = document.getElementById('answer' + i);
 
-            if(input.checked == true && input.value == this.trueAnswer) {
+            if(input.checked === true && input.value === this.trueAnswer) {
                 this.counter++;
                 break;
             } else {
@@ -88,7 +111,7 @@ class Questions extends React.Component{
         let questionTitle = document.querySelector('.testTitleH5');
         questionTitle.innerHTML = "Результат:";
 
-        let total = Math.round((10 / data.totalQuestions) * this.counter);
+        let total = Math.round((10 / this.data.totalQuestions) * this.counter);
 
         let button = document.querySelector('.repiatTest');
         button.style.display = "block";
@@ -103,14 +126,12 @@ class Questions extends React.Component{
             </div>
         `;
         
-        let storage = localStorage.getItem(data.id);
-        
-        
+        localStorage.getItem(this.data.id);
     }
 
     show(step) {
         let answer;
-        let question = data.questions[step];
+        let question = this.data.questions[step];
 
         let questionTitle = document.querySelector('.testTitleH5');
         questionTitle.innerHTML = "Вопрос " + (step + 1) + " - " + question.title;
@@ -125,6 +146,9 @@ class Questions extends React.Component{
                         ${ el.title }
                     </label>
                 </div>
+                <div>
+
+                </div>
             `;
 
             if(el.flag) {
@@ -135,10 +159,10 @@ class Questions extends React.Component{
         let next = document.querySelector('.nextQuestion');
         let finish = document.querySelector('.finishTest');
         
-        if(step < data.questions.length - 1) {
+        if(step < this.data.questions.length - 1) {
             next.style.display = 'block';
         }
-        else if(step = data.questions.length - 1) {
+        else if(step === this.data.questions.length - 1) {
             next.style.display = 'none';
             finish.style.display = 'block';
         }
