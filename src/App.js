@@ -12,8 +12,7 @@ import Theory from './Module/Theory';
 import Practice from './Module/Practice';
 import Control from './Module/Control';
 import Materials from './Module/Materials';
-
-import Vvedenie1 from './Material/Vvedenie1/Vvedenie1';
+import Questions from './Module/Questions';
 
 let appBody = {
     width: "100%",
@@ -50,9 +49,9 @@ function App() {
         <Route path = "/practice" component = {Practice} />
         <Route path = "/control" component = {Control} />
         <Route path = "/materials" component = {Materials} />
+        <Route path = "/questions" component = {Questions} />
 
         {/* Materials */}
-        <Route path = "/Material/Vvedenie1" component = {Vvedenie1} />
       </BrowserRouter>
 
       <Nav />

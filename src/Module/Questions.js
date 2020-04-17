@@ -1,111 +1,139 @@
 import React from 'react';
 
+import {data} from '../data/data'
+
 class Questions extends React.Component{
+    step = 0;
+    trueAnswer;
+    counter = 0;
+
     constructor(props) {
         super(props);
-        
-        this.checkAnswer = this.checkAnswer.bind(this);
-
+            
         this.state = {
             checked: false,
             counter: 0
         }
+
+        this.start = this.start.bind(this);
     }
 
-    checkAnswer(event) {
-        let count = 0;
-        event.preventDefault();
+    start() {
+        let tmp = {
+            'id_test': data.id + "_" + document.querySelector('#testStartName').value + "_" + Date.now(),
+            'name': document.querySelector('#testStartName').value,
+            'true_answers': 0,
+            'assessment': 0,
+            'date': Date.now()
+        }
 
-        this.props.data.questions.map(function(el, index) {
-            let answers = document.querySelectorAll('.' + el.id);
+        localStorage.setItem('1', tmp);
 
-            el.variants.map(function(e, i) {
-                answers.forEach(element => {
-                    if((element.checked && e.flag) &&
-                        e.title == element.value) {
-                        count++;
-                    }
-                });
-            });
+        document.querySelector('.login').remove();
+        
+        this.anstrueAnswerwer = this.show(this.step);
+    }
 
+    nextQuestuion(event) {
+        this.check();
+        
+        let body = document.querySelector('.testAnswers');
+
+        body.innerHTML = "";
+
+        this.step++;
+        this.show(this.step);
+    }
+
+    check(props) {
+        let question = data.questions[this.step].variants;
+        
+        for(let i = 0; i <= question.length - 1; i++) {
+            let input = document.getElementById('answer' + i);
+
+            if(input.checked == true && input.value == this.trueAnswer) {
+                this.counter++;
+                break;
+            } else {
+                continue;
+            }
+        }
+    }
+
+    finish(e) {
+        this.check();
+
+        let body = document.querySelector('.testAnswers');
+        let button = document.querySelector('.testButton');
+        body.innerHTML = '';
+        body.innerHTML = `
+            <div>
+                ${this.counter}
+            </div>
+        `;
+        // TOTAl
+    }
+
+    show(step) {
+        let answer;
+        let question = data.questions[step];
+
+        let questionTitle = document.querySelector('.testTitleH5');
+        questionTitle.innerHTML = "Вопрос " + (step + 1) + " - " + question.title;
+
+        let body = document.querySelector('.testAnswers');
+
+        question.variants.map(function(el, index) {
+            body.innerHTML += `
+                <div class = "testBlockInput">
+                    <input type = "checkbox" id = "answer${ index }" value = "${ el.title }"/>
+                    <label for = "answer${ index }" class = "labelTest">
+                        ${ el.title }
+                    </label>
+                </div>
+            `;
+
+            if(el.flag) {
+                answer = el.title;
+            }
         });
 
+        let next = document.querySelector('.nextQuestion');
+        let finish = document.querySelector('.finishTest');
         
-        this.setState({ 
-            checked: true,
-            counter: count
-        })
+        if(step < data.questions.length - 1) {
+            next.style.display = 'block';
+        }
+        else if(step = data.questions.length - 1) {
+            next.style.display = 'none';
+            finish.style.display = 'block';
+        }
+
+        this.trueAnswer = answer;
     }
 
     render() {
-        let j = 0;
 
-        let test = {
-            display: this.state.checked ? "none" : "block"
-        }
-        
-        let result = {
-            display: this.state.checked ? "block" : "none",
-            color: "white"
-        }
-        
-        let total = this.props.data.totalQuestions;
-
-        let questions = this.props.data.questions;
-        questions = questions.map(function(el, index) {
-
-            j++;
-
-            let variants = el.variants.map(function(e, i) {
-                return (
-                    <div className = "q-Input">
-                        <div>
-                            <input type = "radio" id = {'id' + j} name = {el.id} className = {el.id} value = {e.title}/>
-                        </div>
-                        <div>
-                            <label for = {'id' + j}> {e.title} </label>
+       return(
+            <div className = "test">
+                <div className = "testBody">
+                    <div className = "testQuestion">
+                        <h5 className = "testTitleH5">Введите Ваши данные</h5>
+                    </div>
+                    <div className = "testAnswers">
+                        <div className = "login">
+                            <input  type="text" id="testStartName" placeholder = "Ф.И.О" maxLength = "30"/>
+                            <button className = "StartTest" onClick = {() => this.start()}>Начать тест</button>
                         </div>
                     </div>
-                );
-            });
-
-            return (
-                <div>
-                    <li> <h3 className = "q-question"> { el.title } </h3> </li>
-                    <div className = "variants">
-                        { variants }
+                    <div className = "testButton">
+                        <button className = "nextQuestion" onClick = {(e) => this.nextQuestuion(e)}>Следющий вопрос</button>
+                        <button className = "finishTest" onClick = {(e) => this.finish(e)}>Завершить тест</button>
                     </div>
-                </div>
-            );
-        });
-
-        return(
-            <div>
-                <div style = { test }>
-                    <h2 className = "q-Title"> Тест по теме <br/> <i> {this.props.data.testName} </i> </h2>
-                    <div className = "q-container">
-                        <ol type = "1" className = "q-list">
-                            {questions}
-                        </ol>
-                        <input
-                            type = "button"
-                            value = "Завершить выполнение" 
-                            className = "q-Button"
-                            onClick = {this.checkAnswer}
-                        />
-                    </div>
-                </div>
-                <div style = { result }>
-                    {this.state.counter} / {total}
-                    <input
-                            type = "button"
-                            value = "Пройти тест еще раз" 
-                            className = "q-Button"
-                            // onClick = {this.checkAnswer} 
-                    />
                 </div>
             </div>
         );
+
     }
 }
 

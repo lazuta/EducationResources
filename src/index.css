@@ -355,3 +355,111 @@ code {
   text-decoration: none;
   margin: 5px;
 }
+
+.test {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.testBody {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  color: white;
+}
+
+.testQuestion {
+  text-align: center;
+}
+
+.login {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+#testStartName {
+  background-color: #20232A;
+  border: 1px solid white;
+  padding: 10px 15px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.testTitleH5 {
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.StartTest {
+  margin-top: 20px;
+  background-color: rgba(0, 0, 255, 0.137);
+  border: 1px solid white;
+  color: white;
+  text-transform: uppercase;
+  transition: .5s;
+  padding: 10px 15px;
+  width: 320px;
+}
+
+.StartTest:hover {
+  cursor: pointer;
+  border: 2px solid rgba(0, 0, 255, 0.137);
+  background: #20232A;
+  transition: .5s;
+}
+
+.testAnswers {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.testButton {
+  text-align: center;
+}
+
+.nextQuestion,
+.finishTest {
+  display: none;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 255, 0.137);
+  border: 1px solid white;
+  color: white;
+  text-transform: uppercase;
+  transition: .5s;
+  padding: 10px 15px;
+  width: 200px;
+}
+
+
+.nextQuestion:hover,
+.finishTest:hover {
+  cursor: pointer;
+  border: 2px solid rgba(0, 0, 255, 0.137);
+  background: #20232A;
+  transition: .5s;
+}
+
+.labelTest {
+  text-align: justify;
+  margin-left: 5px;
+}
+
+.testBlockInput {
+  display: flex;
+  flex-direction: row;
+}
