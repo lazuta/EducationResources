@@ -433,7 +433,8 @@ code {
 }
 
 .nextQuestion,
-.finishTest {
+.finishTest,
+.repiatTest {
   display: none;
   margin-top: 20px;
   background-color: rgba(0, 0, 255, 0.137);
@@ -447,7 +448,8 @@ code {
 
 
 .nextQuestion:hover,
-.finishTest:hover {
+.finishTest:hover,
+.repiatTest:hover {
   cursor: pointer;
   border: 2px solid rgba(0, 0, 255, 0.137);
   background: #20232A;

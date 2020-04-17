@@ -19,17 +19,37 @@ class Questions extends React.Component{
     }
 
     start() {
-        let tmp = {
-            'id_test': data.id + "_" + document.querySelector('#testStartName').value + "_" + Date.now(),
-            'name': document.querySelector('#testStartName').value,
-            'true_answers': 0,
-            'assessment': 0,
-            'date': Date.now()
+        let tmp;
+        this.step = 0;
+
+        document.querySelector('.finishTest').style.display = "none";
+        document.querySelector('.repiatTest').style.display = "none";
+
+        let result = document.querySelector('.TotalResultInput');
+        if(result) { result.style.display = "none"; }
+
+        if(!localStorage.getItem(data.id)) {
+            tmp = {
+                'id_test': data.id,
+                'name': document.querySelector('#testStartName').value,
+                'true_answers': 0,
+                'assessment': 0,
+                'date': Date.now()
+            }
+        } else {
+            tmp = {
+                'id_test': data.id,
+                'name': localStorage.getItem(data.id).name,
+                'true_answers': 0,
+                'assessment': 0,
+                'date': Date.now()
+            }
         }
 
-        localStorage.setItem('1', tmp);
+        let login = document.querySelector('.login');
+        if(login) { login.remove(); }
 
-        document.querySelector('.login').remove();
+        localStorage.setItem(data.id, JSON.stringify(tmp));
         
         this.anstrueAnswerwer = this.show(this.step);
     }
@@ -64,14 +84,28 @@ class Questions extends React.Component{
         this.check();
 
         let body = document.querySelector('.testAnswers');
-        let button = document.querySelector('.testButton');
+        
+        let questionTitle = document.querySelector('.testTitleH5');
+        questionTitle.innerHTML = "Результат:";
+
+        let total = Math.round((10 / data.totalQuestions) * this.counter);
+
+        let button = document.querySelector('.repiatTest');
+        button.style.display = "block";
+
+        document.querySelector('.nextQuestion').style.display = 'none';
+        document.querySelector('.finishTest').style.display = 'none';
+
         body.innerHTML = '';
         body.innerHTML = `
-            <div>
-                ${this.counter}
+            <div class = "TotalResultInput">
+                ${total}
             </div>
         `;
-        // TOTAl
+        
+        let storage = localStorage.getItem(data.id);
+        
+        
     }
 
     show(step) {
@@ -129,6 +163,7 @@ class Questions extends React.Component{
                     <div className = "testButton">
                         <button className = "nextQuestion" onClick = {(e) => this.nextQuestuion(e)}>Следющий вопрос</button>
                         <button className = "finishTest" onClick = {(e) => this.finish(e)}>Завершить тест</button>
+                        <button className = "repiatTest" onClick = {(e) => this.start(e)}>Пройти заново</button>
                     </div>
                 </div>
             </div>
