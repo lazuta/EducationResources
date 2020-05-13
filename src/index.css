@@ -353,8 +353,15 @@ code {
 .controleLinks a {
   color: white;
   text-decoration: none;
+  transition: .5s;
   margin: 5px;
 }
+
+
+.controleLinks a:hover {
+  color: brown;
+  transition: .5s;
+ }
 
 .test {
   display: flex;
@@ -465,4 +472,180 @@ code {
 .testBlockInput {
   display: flex;
   flex-direction: row;
+}
+
+.startPractice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 0px auto;
+}
+
+.practiceModule h4,
+.tableTitlePracticle {
+  text-align: center;
+  color: whitesmoke;
+  font-size: 1.5em;
+}
+
+.startPractice {
+  padding: 6px 3px;
+  width: 320px;
+  margin-bottom: 5px;
+  border: 1px solid #444446;
+  color: whitesmoke;
+  transition: .5s;
+  background-color: #20232A;
+}
+
+.startPractice:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 255, 0.137);
+  transition: .5s;
+  border: 1px solid rgba(220, 20, 60, 0.26);
+}
+
+.tablePracticle {
+  display: flex;
+  justify-content: center;
+  line-height: 8px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.774);
+}
+
+.doStart, .doEnd {
+  display: none;
+  text-align: center;
+  margin: 40px auto 0px auto;
+  transition: .5s;
+  width: 320px;
+  font-size: 1.5em;
+  padding: 10px 0px;
+}
+
+.doStart {
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #20232A;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.226);
+}
+
+.doStart:before {
+  content: '';
+  background: linear-gradient(45deg, #ff000071, #ff730083, #fffb0088, #48ff008e, #00ffd58e, #002bff8e, #7a00ff8e, #ff00c88e, #ff00008e);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.doStart:active {
+  color: #000
+}
+
+.doStart:active:after {
+  background: transparent;
+}
+
+.doStart:hover:before {
+  opacity: 1;
+}
+
+.doStart:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #20232A;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+.Timer {
+  display: none;
+  width: 320px;
+  justify-content: center;
+  flex-direction: row;
+  margin: 20px auto 0px auto;
+  color: rgb(45, 158, 69);
+  font-size: 2em;
+}
+
+.doEnd {
+  color: #FFF;
+  transition: all 0.5s;
+  position: relative; 
+  background-color: #20232A;
+}
+
+.doEnd span {
+  z-index: 2; 
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;   
+}
+
+.doEnd:hover {
+  cursor: pointer;
+}
+
+.doEnd::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.5s;
+  border: 1px solid rgba(255,255,255,0.2);
+  background-color: rgba(170, 14, 14, 0.1);
+}
+
+.doEnd::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.5s;
+  border: 1px solid rgba(255,255,255,0.2);
+  background-color: rgba(255,255,255,0.1);
+}
+
+.doEnd:hover::before {
+transform: rotate(-30deg);
+background-color: rgba(255,255,255,0);
+}
+
+.doEnd:hover::after {
+transform: rotate(30deg);
+background-color: rgba(255,255,255,0);
 }
