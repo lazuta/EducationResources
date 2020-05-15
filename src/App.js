@@ -2,17 +2,19 @@ import React from 'react';
 
 import ModuleMenu from './Menu/ModuleMenu';
 import {Route, BrowserRouter} from 'react-router-dom';
+import { Lines } from 'react-preloaders';
 
 import imgBg from './images/bg.jpg';
 import imgLogo from './images/bsac_logo.png';
 
 import Nav from './Menu/Nav';
 import Program from './Module/Program';
-import Theory from './Module/Theory';
+import Gallery from './Module/Gallery';
 import Practice from './Module/Practice';
 import Control from './Module/Control';
 import Materials from './Module/Materials';
 import Questions from './Module/Questions';
+import PowerBy from './Module/PowerBy';
 
 let appBody = {
     width: "100%",
@@ -42,17 +44,26 @@ function App() {
         </div>
       </div>
 
+      <a className = "by" href = "/PowerBy">BY</a>
+
+      <Lines 
+        background = '#20232A'
+        color = 'white'
+        time = { 1000 }
+      />
+
       <BrowserRouter>
+        <Route exact path = "/" component = {ModuleMenu} />
+
         <Route path = "/program" component = {Program} />
-        <Route path = "/theory" component = {Theory} />
+        <Route path = "/gallery" component = {Gallery} />
         <Route path = "/practice" component = {Practice} />
         <Route path = "/control" component = {Control} />
         <Route path = "/materials" component = {Materials} />
         <Route path = "/questions" component = {Questions} />
-
-        {/* Materials */}
+        <Route path = "/PowerBy" component = {PowerBy} />
+        
       </BrowserRouter>
-
       <Nav />
     </section>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {t1} from '../data/t1';
+import {t2} from '../data/t2';
 import {t3} from '../data/t3';
 
 class Questions extends React.Component{
@@ -28,9 +29,11 @@ class Questions extends React.Component{
         if(localStorage.getItem('id')) {
             let storage = localStorage.getItem('id');
 
-            if(storage == "t1") {
+            if(storage === "t1") {
                 this.data = t1;
-            } else if(storage == "t3") {
+            } else if(storage === "t2") {
+                this.data = t2;
+            } else if(storage === "t3") {
                 this.data = t3;
             }
 
