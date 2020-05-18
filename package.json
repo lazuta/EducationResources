@@ -19,7 +19,7 @@
   },
   "build": {
     "appId": "your.id",
-    "productName":"EYMK",
+    "productName": "EYMK",
     "icon": ""
   },
   "scripts": {

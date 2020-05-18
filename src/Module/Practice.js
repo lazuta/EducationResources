@@ -92,7 +92,7 @@ class Practice extends React.Component{
 
                 this.minutes = M;
             }
-        }, 1000);
+        }, 10);
     }
 
     doEnd() {

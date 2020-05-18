@@ -781,3 +781,7 @@ code {
 .by:hover:after{
   width: 100%;
 }
+
+.ContainerProgramm {
+  margin-bottom: 70px;
+}
