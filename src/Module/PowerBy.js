@@ -28,7 +28,6 @@ export default function codeowerBy() {
             <code>Артём Кульгавчук</code>
             <code>Дмитрий Дмитриев</code>
             <code>Паша Бутько</code>
-
         </div>
     );
 }   
