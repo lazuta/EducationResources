@@ -13,7 +13,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({width: 1280, height: 800});
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
   mainWindow.on('closed', () => mainWindow = null);
-  mainWindow.removeMenu()
+  // mainWindow.removeMenu()
 }
 
 app.on('ready', createWindow);
