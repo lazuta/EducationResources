@@ -5,7 +5,7 @@ import logo from '../images/logo.png';
 export default function codeowerBy() {
     return(
         <div className = "ContainerProgramm">
-            <h4>Рзработано BY</h4>
+            <h4>Разработано BY</h4>
             <img src = { logo }/>
             <h4>Под руководством</h4>
             <code className = "admin">Способ Сергей Павлович</code>

@@ -27,9 +27,6 @@ class Control extends React.Component{
                 <a href = "/questions" onClick = {() => this.setTest(t2.id)}> Тест 2: Устройство и эксплуотация многоканальных систем </a>
                 <a href = "/questions" onClick = {() => this.setTest(t3.id)}> Тест 3: Техническое обслуживание аппаратной П-178МБ </a>
             </div>
-            <div>
-                {/* TODO: GET RESULTS / DEL RESULT + PASS */}
-            </div>
         </div>
         );
     }
